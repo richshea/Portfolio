@@ -19,6 +19,8 @@ Main Files:
         submit_post.php
         delete_posts.php
       mySQL
+      javascript
+        
       requires 
         classes.php  
 

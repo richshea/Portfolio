@@ -1,0 +1,18 @@
+Functions:
+
+
+
+submit_post() 
+  submits the post form to create a new post in the blog table
+  uses submit_post.php
+
+get_post_list()
+  gets a list of all of the records in the blog table in pageObject->html_delete() form
+  uses get_post_list.php
+  
+delete_post(id)
+  removes all html from within the element with id = id. 
+  deletes the record in the blog table with primary key = id
+
+toggle_content(id)
+  alternately change the style of the element with id=id from display none to display block

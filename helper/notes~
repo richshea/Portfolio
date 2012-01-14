@@ -58,12 +58,6 @@ check your db connection security - where to put the password?
 Build in checking for string lengths for posting
 manage special characters in posts
 
-
-Git:
-git commit -m 'first commit'
-git remote add origin git@github.com:richshea/Portfolio.git
-git push -u origin master
-
     
         
 

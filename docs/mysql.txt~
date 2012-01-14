@@ -25,6 +25,4 @@ Insert into blog (author, title, preview, content) VALUES ("Alexander", "Test Po
 
 delete from blog where date="" or date="" ...
 
-update blog set author=
-
 

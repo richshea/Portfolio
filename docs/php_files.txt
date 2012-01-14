@@ -72,7 +72,7 @@ Helper Files:
         "preview" - preview - 124 chars
         "content" - content - unlimited 
       mySQL
-        pageObject->store() has insert
+        pageObject->store() has insert and update
       requires
         classes.php
 

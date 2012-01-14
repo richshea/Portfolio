@@ -3,7 +3,7 @@
 
 class pageObject {
     
-    public $date; 
+    public $timestamp; 
     public $title;
     public $author;
     public $content;
@@ -16,7 +16,7 @@ class pageObject {
         $this->title =    $array[1];
         $this->preview =  $array[2];
         $this->content =  $array[3];
-        $this->date =     $array[4];
+        $this->timestamp = $array[4];
     }
 
   
@@ -26,7 +26,7 @@ class pageObject {
               <h2>".$this->author."</h2>
               <p><i>".$this->preview."</i></p>
               <p>".$this->content."</p>
-              <h3>".$this->date."</h3>";
+              <h3>".$this->timestamp."</h3>";
     }    
 
     //writes the data in this object to the blog table as a new post
@@ -35,9 +35,15 @@ class pageObject {
         $dbhandle = mysql_connect("localhost", "briarmoss", "fourastwojsonel");
         $ok = mysql_select_db("portfolio");
 
-        $update_bool = mysql_query(
-        "Insert into blog (author, title, preview, content) VALUES (\"".$this->author."\", \"".$this->title."\", \"".$this->preview."\", \"".$this->content."\");"
-        );   
+        if ($this->timestamp == 0) {
+          $update_bool = mysql_query(
+            "Insert into blog (author, title, preview, content) VALUES (\"$this->author\", \"$this->title\", \"$this->preview\", \"$this->content\");"
+          );   
+        } else {
+          $update_bool = mysql_query(
+            "update blog set author=\"$this->author\", title=\"$this->title\", preview=\"$this->preview\", content=\"$this->content\" where date=\"$this->timestamp\";"
+          );
+        }
 
         mysql_close($dbhandle);
         return $update_bool;
@@ -55,12 +61,15 @@ class pageObject {
        Code produced contains a delete button that triggers an Ajax function to delete the post with the same timestamp in the blog table
     */
     function html_delete() {
-        $date_key = $this->date;
-        $html = "<div id=\"$date_key\" onclick=\"toggle_content(this.id);\" style=\"border: dotted; border-width:1px;\">
-                  \"$this->title\" by $this->author on $this->date</h3>
-                  <input type=\"button\" value=\"delete\" onclick=\"delete_post(this.parentNode.id);\" />
-                  <p>$this->preview</p> 
+        $date_key = $this->timestamp;
+        $html = "<div id=\"wrapper_$date_key\" style=\"border: dotted; border-width:1px;\">
+                  <div id=\"$date_key\" onclick=\"toggle_content(this.id);\">
+                  $this->title by $this->author on $this->timestamp</h3>
+                  <p id=\"preview_$date_key\">$this->preview</p> 
                   <div id=\"content_$date_key\" style=\"display: none;\">$this->content</div>
+                  </div>
+                  <input type=\"button\" value=\"delete\" onclick=\"delete_post('$date_key');\" />
+                  <input type=\"button\" value=\"edit\" onclick=\"edit_post('$date_key');\" />
                   </div>";
         return $html;
     }

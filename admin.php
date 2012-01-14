@@ -39,6 +39,9 @@ if (isset($_POST["password"])) {
                 post_values += document.getElementById("preview").value;
                 post_values += "&content=";
                 post_values += document.getElementById("content").value;
+                post_values += "&timestamp=";
+                post_values += document.getElementById("timestamp").value;
+                
 
 
                 xmlhttp.onreadystatechange=function() {
@@ -102,7 +105,7 @@ if (isset($_POST["password"])) {
                 
                 xmlhttp.onreadystatechange=function() {
                   if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-                      document.getElementById(id).innerHTML = "";
+                      document.getElementById("wrapper_"+id).innerHTML = "";
                       if (xmlhttp.responseText==1) {
                         document.getElementById("post_status").innerHTML = "post destroyed!";
                       } else {
@@ -135,6 +138,39 @@ if (isset($_POST["password"])) {
                 document.getElementById('content_'+id).style.display = "none";
               }
             }
+          
+            function edit_post(id) {
+              var author, title, preview, content;
+              var author_and_title;
+  
+              //dealing with: title by author on id
+              author_and_title = document.getElementById(id).innerHTML.split("on", 1)[0];
+              author_and_title = author_and_title.replace(/^\s+|\s+$/g,""); //trim whitespace
+              author_and_title = author_and_title.split(" by ", 2); //split
+              title = author_and_title[0];
+              author = author_and_title[1];
+
+              preview = document.getElementById("preview_"+id).innerHTML;
+
+              content = document.getElementById("content_"+id).innerHTML;
+
+
+              document.getElementById("author").value = author;
+              document.getElementById("title").value = title;
+              document.getElementById("timestamp").value = id;
+              document.getElementById("content").value = content;
+              document.getElementById("preview").value = preview;
+              
+
+            }
+      
+            function clear_form() {
+              document.getElementById("author").value = "";
+              document.getElementById("title").value = "";
+              document.getElementById("timestamp").value = 0;
+              document.getElementById("content").value = "";
+              document.getElementById("preview").value = "";
+            }
             
     </script>
 </head>
@@ -142,6 +178,11 @@ if (isset($_POST["password"])) {
 
 <table><tr><td>
     <form name="frm_post" id="frm_post"> 
+        <label for="timestamp">Date Posted</label>
+        <input type="text" name="timestamp" id="timestamp" value="0" readonly="readonly" /> 
+
+        <br/>
+
         <label for="author">Author</label>
         <input type="text" name="author" id="author" maxlength="64" /> 
 
@@ -164,6 +205,7 @@ if (isset($_POST["password"])) {
 
         <input type="button" value="post" onclick="submit_post();" />
         <input type="button" value="list" onclick="get_post_list();" />
+        <input type="button" value="clear" onclick="clear_form();" />
     </form>
     <div id="post_status">
     </div>
