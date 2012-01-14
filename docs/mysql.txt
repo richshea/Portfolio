@@ -1,0 +1,28 @@
+MYSQL notes (history)
+
+
+mysql tables:
+Blog
+    date
+    title
+    content
+    author
+    preview
+
+Statements (in order of execution): 
+
+create table blog (
+    author VARCHAR(64),
+    title VARCHAR(124),
+    preview VARCHAR(124),
+    content TEXT,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP PRIMARY KEY
+    )
+
+Insert into blog (author, title, preview, content) VALUES ("Alexander", "My First Post!", "Embarking upon a journey of blogular exploration", "This is the first post that I'm inserting into my brand spanking new MYSQL database. I'm writing it in gedit because the interface for it on my blog is only a figment of my imagination")
+
+Insert into blog (author, title, preview, content) VALUES ("Alexander", "Test Post", "Test it yo.", "Test 1 2 3, Anything but that");
+
+delete from blog where date="" or date="" ...
+
+

@@ -1,0 +1,61 @@
+
+
+Pages
+    homepage
+    blog
+    video
+    pictures
+    object
+    
+
+
+MYSQL, HTML, CSS, javascript, PHP
+
+Thinking about the setup:
+    Homepage
+        four vertical columns 
+            blog
+            pictures
+            videos
+            banner
+
+    click on the blog link, get taken to the blog page
+    use header printing function to print header
+        to allow navigation between the four modules
+    use pagebuilder function to print the rest of the page
+        supply table (blog, video, pictures)
+        supply number of posts to display
+        supply select statement
+            allows for different orderings
+
+
+
+The date field is automatically updated upon record creation but not on update
+    
+    
+CSS notes:
+put a style tag in the submit button on the login page for the admin.php page. 
+    so you just hit enter and there's no button
+    
+
+Questions:
+    permalinking to a post?
+        posts will have unique ids.
+        NO automatically generate select statements?
+        a post page with a required id argument. Ids are mutable?
+
+security:
+check your db connection security - where to put the password?
+        maybe md5 somehow?
+look at all the unquarantined get usage in helper files
+
+to DO:
+Write the showblog function now that the blog table is set up - DONE
+Write a Delete function for the admin page -DONE
+    change so the posts can be expanded and deleting is more explicit.
+check your db connection security - where to put the password?
+        maybe md5 somehow?
+    
+        
+
+    

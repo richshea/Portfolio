@@ -1,0 +1,101 @@
+Files in /home/briarmoss/public_html :
+
+admin.php  blog.php  docs  helper  home.php
+
+./helper:
+classes.php       get_post_list.php  
+delete_posts.php  submit_post.php
+
+
+Directories:
+  docs - for documentation
+  helper - helper files (for ajax functions)
+
+Main Files:
+  admin.php
+      Administration page for anyone who knows the secret password. 
+      Ajax
+        get_post_list.php
+        submit_post.php
+        delete_posts.php
+      mySQL
+      requires 
+        classes.php  
+
+  blog.php
+      Displays the entirety of the blog table
+      Ajax
+      mySQL
+        select
+      requires 
+        classes.php  
+
+  home.php
+      A home page for the blog
+      Ajax
+      mySQL
+      requires 
+        classes.php 
+
+Helper Files:
+  classes.php 
+      - holds the class definitions for inclusion in other files
+      classes
+        pageObject
+      requires
+
+  delete_posts.php 
+      - expects a list of primary keys from the blog table and deletes those entries. primary key is timestamp
+      parameters
+        "date_array" - a comma delimited text list of pageObject->mysql_date() outputs sent by get
+      mySQL
+        delete
+      requires
+        classes.php
+  
+  get_post_list.php 
+      - retrieves a list of all posts in the blog table and returns a list of pageObject->html_delete() output
+      parameters
+        does not expect get or post
+      mySQL
+        select
+      requires
+        classes.php
+  
+  submit_post.php 
+      - gets an associated post array of values, creates a pageObject object and calls pageObject->store()
+      parameters - method is POST
+        "author" - author - 64 chars
+        "title" - title - 124 chars
+        "preview" - preview - 124 chars
+        "content" - content - unlimited 
+      mySQL
+        pageObject->store() has insert
+      requires
+        classes.php
+
+Classes:
+  
+  pageObject
+    fields - all public
+      date - a mysql timestamp string
+      title - <= 124 chars
+      author - <= 64 chars
+      content - unlimited 
+      preview - <= 124 chars
+    methods
+      toHtml() - 
+        echos the data in this pageObject in html format.
+      store() - 
+        writes the data in this object to the blog table as a new post
+      html_delete() - 
+        produces html that holds a post's entire data set but only displays some information. The content is hidden at first
+        The code produced uses the javascript functions delete_post and toggle_content defined in admin.php
+        Code produced contains a delete button that triggers an Ajax function to delete the post with the same timestamp in the blog table
+
+
+      
+      
+
+  
+      
