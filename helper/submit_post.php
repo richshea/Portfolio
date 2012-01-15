@@ -5,7 +5,7 @@ require_once ('classes.php');
 
 $array = array($_POST["author"], $_POST["title"], $_POST["preview"], $_POST["content"], $_POST["timestamp"]);
 
-$new_post = new pageObject($array);
+$new_post = new blogObject($array);
 
 $success = $new_post->store();
 

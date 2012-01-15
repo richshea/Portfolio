@@ -1,7 +1,7 @@
 
 <?php
 
-class pageObject {
+class blogObject {
     
     public $timestamp; 
     public $title;
@@ -20,7 +20,7 @@ class pageObject {
     }
 
   
-    //echos the data in this pageObject in html format. 
+    //echos the data in this blogObject in html format. 
     function toHtml() {
         echo "<h1>".$this->title."</h1>
               <h2>".$this->author."</h2>
@@ -65,7 +65,7 @@ class pageObject {
         $html = "<div id=\"wrapper_$date_key\" style=\"border: dotted; border-width:1px;\">
                   <div id=\"$date_key\" onclick=\"toggle_content(this.id);\">
                   $this->title by $this->author on $this->timestamp</h3>
-                  <p>$this->preview</p> 
+                  <p id=\"preview_$date_key\">$this->preview</p> 
                   <div id=\"content_$date_key\" style=\"display: none;\">$this->content</div>
                   </div>
                   <input type=\"button\" value=\"delete\" onclick=\"delete_post('$date_key');\" />

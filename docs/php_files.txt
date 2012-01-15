@@ -43,20 +43,20 @@ Helper Files:
   classes.php 
       - holds the class definitions for inclusion in other files
       classes
-        pageObject
+        blogObject
       requires
 
   delete_posts.php 
       - expects a list of primary keys from the blog table and deletes those entries. primary key is timestamp
       parameters
-        "date_array" - a comma delimited text list of pageObject->mysql_date() outputs sent by get
+        "date_array" - a comma delimited text list of blogObject->mysql_date() outputs sent by get
       mySQL
         delete
       requires
         classes.php
   
   get_post_list.php 
-      - retrieves a list of all posts in the blog table and returns a list of pageObject->html_delete() output
+      - retrieves a list of all posts in the blog table and returns a list of blogObject->html_delete() output
       parameters
         does not expect get or post
       mySQL
@@ -65,20 +65,20 @@ Helper Files:
         classes.php
   
   submit_post.php 
-      - gets an associated post array of values, creates a pageObject object and calls pageObject->store()
+      - gets an associated post array of values, creates a blogObject object and calls blogObject->store()
       parameters - method is POST
         "author" - author - 64 chars
         "title" - title - 124 chars
         "preview" - preview - 124 chars
         "content" - content - unlimited 
       mySQL
-        pageObject->store() has insert and update
+        blogObject->store() has insert and update
       requires
         classes.php
 
 Classes:
   
-  pageObject
+  blogObject
     fields - all public
       date - a mysql timestamp string
       title - <= 124 chars
@@ -87,7 +87,7 @@ Classes:
       preview - <= 124 chars
     methods
       toHtml() - 
-        echos the data in this pageObject in html format.
+        echos the data in this blogObject in html format.
       store() - 
         writes the data in this object to the blog table as a new post
       html_delete() - 

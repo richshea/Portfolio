@@ -50,7 +50,7 @@ if (isset($_POST["password"])) {
                       document.getElementById("post_status").innerHTML="post added";
                       get_post_list();
                     } else {
-                      document.getElementById("post_status").innerHTML="error: pageObject.store() returned false";
+                      document.getElementById("post_status").innerHTML="error: blogObject.store() returned false";
                     }
                   }
                 }

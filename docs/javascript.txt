@@ -1,13 +1,13 @@
 Functions:
 
-
+admin.php {
 
 submit_post() 
   submits the post form to create a new post in the blog table
   uses submit_post.php
 
 get_post_list()
-  gets a list of all of the records in the blog table in pageObject->html_delete() form
+  gets a list of all of the records in the blog table in blogObject->html_delete() form
   uses get_post_list.php
   
 delete_post(id)
@@ -16,3 +16,6 @@ delete_post(id)
 
 toggle_content(id)
   toggle between showing and hiding the content of a post's div tag in an html_delete list. Used onclick.
+
+
+}

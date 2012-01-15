@@ -3,6 +3,10 @@
 
 class pageObject {
     
+}
+
+class blogObject {
+    
     public $timestamp; 
     public $title;
     public $author;
@@ -20,7 +24,7 @@ class pageObject {
     }
 
   
-    //echos the data in this pageObject in html format. 
+    //echos the data in this blogObject in html format. 
     function toHtml() {
         echo "<h1>".$this->title."</h1>
               <h2>".$this->author."</h2>

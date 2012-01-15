@@ -7,7 +7,7 @@ submit_post()
   uses submit_post.php
 
 get_post_list()
-  gets a list of all of the records in the blog table in pageObject->html_delete() form
+  gets a list of all of the records in the blog table in blogObject->html_delete() form
   uses get_post_list.php
   
 delete_post(id)
@@ -15,4 +15,4 @@ delete_post(id)
   deletes the record in the blog table with primary key = id
 
 toggle_content(id)
-  alternately change the style of the element with id=id from display none to display block
+  toggle between showing and hiding the content of a post's div tag in an html_delete list. Used onclick.

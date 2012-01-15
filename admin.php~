@@ -205,6 +205,7 @@ if (isset($_POST["password"])) {
 
         <input type="button" value="post" onclick="submit_post();" />
         <input type="button" value="list" onclick="get_post_list();" />
+        <input type="button" value="clear" onclick="clear_form();" />
     </form>
     <div id="post_status">
     </div>

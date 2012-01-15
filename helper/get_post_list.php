@@ -17,7 +17,7 @@ require_once('classes.php');
         
         $blog_post = mysql_fetch_row($blog_post_array);
 
-        $post_object = new pageObject($blog_post);
+        $post_object = new blogObject($blog_post);
 
         echo $post_object->html_delete();
 

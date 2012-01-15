@@ -11,8 +11,6 @@ require_once('classes.php');
     
     //create a constant so it can be used in the for loop instead of running mysql_num_rows every time
     $numposts = mysql_num_rows($blog_post_array); 
- 
-
 
     //for loop for displaying all posts
     for ($i = 0; $i < $numposts; $i++) {
